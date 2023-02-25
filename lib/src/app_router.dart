@@ -1,6 +1,6 @@
-import 'package:app_greengrosser/src/auth/sigin_up_screen.dart';
-import 'package:app_greengrosser/src/auth/signin_screen.dart';
-import 'package:app_greengrosser/src/base/base_screen.dart';
+import 'package:app_greengrosser/src/pages/auth/sigin_up_screen.dart';
+import 'package:app_greengrosser/src/pages/auth/signin_screen.dart';
+import 'package:app_greengrosser/src/pages/base/base_screen.dart';
 import 'package:go_router/go_router.dart';
 
 const initialRoute = '/';

@@ -13,7 +13,7 @@ Map<int, Color> _swatchOpcity = {
   900: const Color.fromARGB(139, 195, 74, 1),
 };
 
-abstract class customColors {
+abstract class CustomColors {
   static Color contratstColors = Colors.red.shade700;
 
   static MaterialColor customSwatchColor = MaterialColor(

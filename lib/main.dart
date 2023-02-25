@@ -1,5 +1,4 @@
 import 'package:app_greengrosser/src/app_router.dart';
-import 'package:app_greengrosser/src/auth/signin_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {

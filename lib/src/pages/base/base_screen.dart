@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../home/home_tab.dart';
+import 'package:app_greengrosser/src/pages/home/home_tab.dart';
 
 class BaseScreen extends StatefulWidget {
   const BaseScreen({super.key});

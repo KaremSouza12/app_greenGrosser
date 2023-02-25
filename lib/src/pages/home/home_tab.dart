@@ -1,8 +1,19 @@
 import 'package:app_greengrosser/src/config/custom_colors.dart';
+import 'package:app_greengrosser/src/pages/home/components/item_tile.dart';
 import 'package:flutter/material.dart';
+import 'package:app_greengrosser/src/config/app_data.dart' as appData;
 
-class HomeTab extends StatelessWidget {
+import 'components/category_tile.dart';
+
+class HomeTab extends StatefulWidget {
   const HomeTab({super.key});
+
+  @override
+  State<HomeTab> createState() => _HomeTabState();
+}
+
+class _HomeTabState extends State<HomeTab> {
+  String selectedCategory = 'Frutas';
 
   @override
   Widget build(BuildContext context) {
@@ -19,13 +30,13 @@ class HomeTab extends StatelessWidget {
               TextSpan(
                 text: 'Green',
                 style: TextStyle(
-                  color: customColors.customSwatchColor,
+                  color: CustomColors.customSwatchColor,
                 ),
               ),
               TextSpan(
                 text: 'grocer',
                 style: TextStyle(
-                  color: customColors.contratstColors,
+                  color: CustomColors.contratstColors,
                 ),
               ),
             ],
@@ -40,7 +51,7 @@ class HomeTab extends StatelessWidget {
             child: GestureDetector(
               onTap: () {},
               child: Badge(
-                backgroundColor: customColors.contratstColors,
+                backgroundColor: CustomColors.contratstColors,
                 textColor: Colors.white,
                 label: const Text(
                   '2',
@@ -50,7 +61,7 @@ class HomeTab extends StatelessWidget {
                 ),
                 child: Icon(
                   Icons.shopping_cart,
-                  color: customColors.customSwatchColor,
+                  color: CustomColors.customSwatchColor,
                 ),
               ),
             ),
@@ -71,7 +82,7 @@ class HomeTab extends StatelessWidget {
                 isDense: true,
                 prefixIcon: Icon(
                   Icons.search,
-                  color: customColors.contratstColors,
+                  color: CustomColors.contratstColors,
                 ),
                 hintText: 'Pesquise aqui...',
                 hintStyle: TextStyle(
@@ -86,6 +97,47 @@ class HomeTab extends StatelessWidget {
                   ),
                 ),
               ),
+            ),
+          ),
+          //Categorias
+          Container(
+            padding: const EdgeInsets.only(left: 25),
+            child: SizedBox(
+              height: 40,
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (_, index) {
+                  return CategoryTile(
+                    onPressed: () {
+                      setState(() {
+                        selectedCategory = appData.categoties[index];
+                      });
+                    },
+                    category: appData.categoties[index],
+                    isSelected: appData.categoties[index] == selectedCategory,
+                  );
+                },
+                separatorBuilder: (_, index) => const SizedBox(width: 10),
+                itemCount: appData.categoties.length,
+              ),
+            ),
+          ),
+          Expanded(
+            child: GridView.builder(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+              physics: const BouncingScrollPhysics(),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 10,
+                crossAxisSpacing: 10,
+                childAspectRatio: 9 / 11.5,
+              ),
+              itemCount: appData.items.length,
+              itemBuilder: (_, index) {
+                return ItemTile(
+                  item: appData.items[index],
+                );
+              },
             ),
           )
         ],

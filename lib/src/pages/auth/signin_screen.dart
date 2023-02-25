@@ -1,6 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:app_greengrosser/src/app_router.dart';
-import 'package:app_greengrosser/src/auth/components/custom_text_field.dart';
+import 'package:app_greengrosser/src/pages/auth/components/custom_text_field.dart';
 import 'package:app_greengrosser/src/config/custom_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -17,7 +17,7 @@ class _SignInScreenState extends State<SignInScreen> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: customColors.customSwatchColor,
+      backgroundColor: CustomColors.customSwatchColor,
       body: SingleChildScrollView(
         child: SizedBox(
           height: size.height,
@@ -45,7 +45,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           TextSpan(
                             text: 'grocer',
                             style: TextStyle(
-                              color: customColors.contratstColors,
+                              color: CustomColors.contratstColors,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -124,7 +124,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         child: Text(
                           'Esqueceu  a Senha?',
                           style: TextStyle(
-                            color: customColors.contratstColors,
+                            color: CustomColors.contratstColors,
                           ),
                         ),
                       ),
