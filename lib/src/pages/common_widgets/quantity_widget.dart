@@ -24,6 +24,7 @@ class QuantityWidget extends StatelessWidget {
         ],
       ),
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
           _QuantityButton(
             color: Colors.grey,
@@ -67,7 +68,6 @@ class _QuantityButton extends StatelessWidget {
     required this.color,
     required this.icon,
     required this.onPressed,
-    super.key,
   });
 
   @override

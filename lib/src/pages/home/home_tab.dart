@@ -1,7 +1,7 @@
 import 'package:app_greengrosser/src/config/custom_colors.dart';
 import 'package:app_greengrosser/src/pages/home/components/item_tile.dart';
 import 'package:flutter/material.dart';
-import 'package:app_greengrosser/src/config/app_data.dart' as appData;
+import 'package:app_greengrosser/src/config/app_data.dart' as app_data;
 
 import 'components/category_tile.dart';
 
@@ -110,15 +110,15 @@ class _HomeTabState extends State<HomeTab> {
                   return CategoryTile(
                     onPressed: () {
                       setState(() {
-                        selectedCategory = appData.categoties[index];
+                        selectedCategory = app_data.categoties[index];
                       });
                     },
-                    category: appData.categoties[index],
-                    isSelected: appData.categoties[index] == selectedCategory,
+                    category: app_data.categoties[index],
+                    isSelected: app_data.categoties[index] == selectedCategory,
                   );
                 },
                 separatorBuilder: (_, index) => const SizedBox(width: 10),
-                itemCount: appData.categoties.length,
+                itemCount: app_data.categoties.length,
               ),
             ),
           ),
@@ -132,10 +132,10 @@ class _HomeTabState extends State<HomeTab> {
                 crossAxisSpacing: 10,
                 childAspectRatio: 9 / 11.5,
               ),
-              itemCount: appData.items.length,
+              itemCount: app_data.items.length,
               itemBuilder: (_, index) {
                 return ItemTile(
-                  item: appData.items[index],
+                  item: app_data.items[index],
                 );
               },
             ),

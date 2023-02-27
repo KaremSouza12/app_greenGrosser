@@ -1,5 +1,7 @@
 import 'package:app_greengrosser/src/models/item_models.dart';
 
+import 'package:app_greengrosser/src/models/cart_item_models.dart';
+
 ItemModel apple = ItemModel(
   description:
       'A melhor maçã da região e que conta com o melhor preço de qualquer quitanda. Este item conta com vitaminas essenciais para o fortalecimento corporal, resultando em uma vida saudável.',
@@ -70,4 +72,19 @@ final List<String> categoties = [
   'Verduras',
   'Tempero',
   'Sereais'
+];
+
+List<CartItemModel> cartItems = [
+  CartItemModel(
+    item: apple,
+    quantity: 2,
+  ),
+  CartItemModel(
+    item: mango,
+    quantity: 1,
+  ),
+  CartItemModel(
+    item: guava,
+    quantity: 2,
+  )
 ];
