@@ -4,10 +4,17 @@ import 'package:app_greengrosser/src/pages/common_widgets/quantity_widget.dart';
 import 'package:app_greengrosser/src/services/utils_service.dart';
 import 'package:flutter/material.dart';
 
-class CartTile extends StatelessWidget {
-  CartTile({super.key, required this.caartItem});
+class CartTile extends StatefulWidget {
+  const CartTile({super.key, required this.cartItem, required this.remove});
 
-  final CartItemModel caartItem;
+  final CartItemModel cartItem;
+  final Function(CartItemModel) remove;
+
+  @override
+  State<CartTile> createState() => _CartTileState();
+}
+
+class _CartTileState extends State<CartTile> {
   final UtilsServices utilsServices = UtilsServices();
 
   @override
@@ -18,20 +25,20 @@ class CartTile extends StatelessWidget {
       child: ListTile(
         //Imagem
         leading: Image.asset(
-          caartItem.item.imgUrl,
+          widget.cartItem.item.imgUrl,
           height: 60,
           width: 60,
         ),
         //Nome
         title: Text(
-          caartItem.item.itemName,
+          widget.cartItem.item.itemName,
           style: const TextStyle(
             fontWeight: FontWeight.w500,
           ),
         ),
         //Total
         subtitle: Text(
-          utilsServices.priceToCurrency(caartItem.totalPrice()),
+          utilsServices.priceToCurrency(widget.cartItem.totalPrice()),
           style: TextStyle(
             color: CustomColors.customSwatchColor,
             fontWeight: FontWeight.bold,
@@ -41,9 +48,17 @@ class CartTile extends StatelessWidget {
         trailing: SizedBox(
           width: 100,
           child: QuantityWidget(
-            suffixText: caartItem.item.unit,
-            value: caartItem.quantity,
-            result: (q) {},
+            suffixText: widget.cartItem.item.unit,
+            value: widget.cartItem.quantity,
+            result: (q) {
+              setState(() {
+                widget.cartItem.quantity = q;
+                if (q == 0) {
+                  widget.remove(widget.cartItem);
+                }
+              });
+            },
+            isRemovable: true,
           ),
         ),
       ),

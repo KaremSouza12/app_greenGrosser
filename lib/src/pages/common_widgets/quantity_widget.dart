@@ -2,20 +2,24 @@ import 'package:app_greengrosser/src/config/custom_colors.dart';
 import 'package:flutter/material.dart';
 
 class QuantityWidget extends StatelessWidget {
-  const QuantityWidget(
-      {super.key,
-      required this.value,
-      required this.suffixText,
-      required this.result});
+  const QuantityWidget({
+    super.key,
+    required this.value,
+    required this.suffixText,
+    required this.result,
+    this.isRemovable = false,
+  });
 
   final int value;
   final String suffixText;
   final Function(int quantity) result;
+  final bool isRemovable;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(4),
+      alignment: Alignment.bottomRight,
+      width: 60,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(50),
@@ -24,19 +28,21 @@ class QuantityWidget extends StatelessWidget {
         ],
       ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
           _QuantityButton(
-            color: Colors.grey,
-            icon: Icons.remove,
+            icon:
+                !isRemovable || value > 1 ? Icons.remove : Icons.delete_forever,
+            color: !isRemovable || value > 1 ? Colors.grey : Colors.red,
             onPressed: () {
-              if (value == 1) return;
+              if (value == 1 && !isRemovable) return;
               int resultCount = value - 1;
               result(resultCount);
             },
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 6),
+            padding: const EdgeInsets.symmetric(horizontal: 4),
             child: Text(
               '$value$suffixText',
               style: const TextStyle(

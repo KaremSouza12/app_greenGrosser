@@ -2,7 +2,7 @@ import 'package:app_greengrosser/src/models/item_models.dart';
 
 class CartItemModel {
   final ItemModel item;
-  final int quantity;
+  int quantity;
 
   CartItemModel({
     required this.item,
