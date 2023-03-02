@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:app_greengrosser/src/config/app_data.dart' as app_data;
 
 class CartTab extends StatefulWidget {
-  CartTab({super.key});
+  const CartTab({super.key});
 
   @override
   State<CartTab> createState() => _CartTabState();

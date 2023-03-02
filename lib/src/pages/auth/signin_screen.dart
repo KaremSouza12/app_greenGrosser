@@ -1,7 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:app_greengrosser/src/app_router.dart';
-import 'package:app_greengrosser/src/pages/auth/components/custom_text_field.dart';
 import 'package:app_greengrosser/src/config/custom_colors.dart';
+import 'package:app_greengrosser/src/pages/common_widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
