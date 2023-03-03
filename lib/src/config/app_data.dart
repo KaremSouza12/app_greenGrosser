@@ -1,6 +1,7 @@
 import 'package:app_greengrosser/src/models/item_models.dart';
 
 import 'package:app_greengrosser/src/models/cart_item_models.dart';
+import 'package:app_greengrosser/src/models/order_model.dart';
 import 'package:app_greengrosser/src/models/user_model.dart';
 
 ItemModel apple = ItemModel(
@@ -96,4 +97,14 @@ UserModel user = UserModel(
   phone: '99 9 90900099',
   cpf: '02039712216',
   password: '2100923',
+);
+
+OrderModel order = OrderModel(
+  id: '21de2342',
+  createdDateTime: DateTime.parse('2022-02-01 20:16:39'),
+  overDueDateTime: DateTime.parse('2022-02-01 21:16:39'),
+  items: [CartItemModel(item: apple, quantity: 2)],
+  status: 'panding_payment',
+  copyAndPaste: '2ee484h64245b34',
+  total: 11,
 );

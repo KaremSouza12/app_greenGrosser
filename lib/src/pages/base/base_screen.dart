@@ -1,4 +1,5 @@
 import 'package:app_greengrosser/src/pages/cart/cart_tab.dart';
+import 'package:app_greengrosser/src/pages/order/order_tab.dart';
 import 'package:app_greengrosser/src/pages/profile/profile_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:app_greengrosser/src/pages/home/home_tab.dart';
@@ -20,11 +21,11 @@ class _BaseScreenState extends State<BaseScreen> {
       body: PageView(
         physics: const NeverScrollableScrollPhysics(),
         controller: pageController,
-        children: [
-          const HomeTab(),
-          const CartTab(),
-          Container(color: Colors.yellow),
-          const ProfileTab()
+        children: const [
+          HomeTab(),
+          CartTab(),
+          OrderTab(),
+          ProfileTab(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
