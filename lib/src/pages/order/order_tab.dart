@@ -1,3 +1,4 @@
+import 'package:app_greengrosser/src/pages/order/components/order_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:app_greengrosser/src/config/app_data.dart' as app_data;
 
@@ -12,13 +13,17 @@ class OrderTab extends StatelessWidget {
       ),
       body: ListView.separated(
         padding: const EdgeInsets.all(16),
-        itemBuilder: itemBuilder,
         separatorBuilder: (_, index) {
           return const SizedBox(
             height: 10,
           );
         },
-        itemCount: itemCount,
+        itemBuilder: (_, index) {
+          return OrderTile(
+            order: app_data.orders[index],
+          );
+        },
+        itemCount: app_data.orders.length,
       ),
     );
   }

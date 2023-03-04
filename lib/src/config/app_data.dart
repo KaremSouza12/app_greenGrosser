@@ -99,12 +99,17 @@ UserModel user = UserModel(
   password: '2100923',
 );
 
-OrderModel order = OrderModel(
-  id: '21de2342',
-  createdDateTime: DateTime.parse('2022-02-01 20:16:39'),
-  overDueDateTime: DateTime.parse('2022-02-01 21:16:39'),
-  items: [CartItemModel(item: apple, quantity: 2)],
-  status: 'panding_payment',
-  copyAndPaste: '2ee484h64245b34',
-  total: 11,
-);
+List<OrderModel> orders = [
+  OrderModel(
+    id: '21de2342',
+    createdDateTime: DateTime.parse('2022-02-01 20:16:39'),
+    overDueDateTime: DateTime.parse('2022-02-01 21:16:39'),
+    items: [
+      CartItemModel(item: apple, quantity: 2),
+      CartItemModel(item: guava, quantity: 3),
+    ],
+    status: 'panding_payment',
+    copyAndPaste: '2ee484h64245b34',
+    total: 11,
+  )
+];
