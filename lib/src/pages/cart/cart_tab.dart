@@ -1,6 +1,7 @@
 import 'package:app_greengrosser/src/config/custom_colors.dart';
 import 'package:app_greengrosser/src/models/cart_item_models.dart';
 import 'package:app_greengrosser/src/pages/cart/components/cart_tile.dart';
+import 'package:app_greengrosser/src/pages/common_widgets/payment_dialog.dart';
 import 'package:app_greengrosser/src/services/utils_service.dart';
 import 'package:flutter/material.dart';
 import 'package:app_greengrosser/src/config/app_data.dart' as app_data;
@@ -90,7 +91,16 @@ class _CartTabState extends State<CartTab> {
                     ),
                     onPressed: () async {
                       bool? result = await showOrderConfirmation();
-                      print(result);
+                      if (result ?? false) {
+                        showDialog(
+                          context: context,
+                          builder: (_) {
+                            return PaymantDiolog(
+                              order: app_data.orders.first,
+                            );
+                          },
+                        );
+                      }
                     },
                     child: const Text(
                       'Concluir Pedido',

@@ -1,5 +1,6 @@
 import 'package:app_greengrosser/src/models/cart_item_models.dart';
 import 'package:app_greengrosser/src/models/order_model.dart';
+import 'package:app_greengrosser/src/pages/common_widgets/payment_dialog.dart';
 import 'package:app_greengrosser/src/pages/order/components/order_status_widget.dart';
 import 'package:app_greengrosser/src/services/utils_service.dart';
 import 'package:flutter/material.dart';
@@ -42,6 +43,7 @@ class OrderTile extends StatelessWidget {
             ],
           ),
           childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+          expandedCrossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             IntrinsicHeight(
               child: Row(
@@ -77,6 +79,49 @@ class OrderTile extends StatelessWidget {
                     ),
                   )
                 ],
+              ),
+            ),
+            Text.rich(
+              TextSpan(
+                style: const TextStyle(
+                  fontSize: 20,
+                ),
+                children: [
+                  const TextSpan(
+                    text: 'Total ',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  TextSpan(
+                    text: utilsServices.priceToCurrency(order.total),
+                  ),
+                ],
+              ),
+            ),
+            Visibility(
+              visible: order.status == 'panding_payment',
+              child: ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (_) {
+                      return PaymantDiolog(
+                        order: order,
+                      );
+                    },
+                  );
+                },
+                icon: Image.asset(
+                  'assets/images/pix.png',
+                  height: 18,
+                ),
+                label: const Text('Ver Qr Code Pix'),
               ),
             )
           ],
