@@ -79,20 +79,22 @@ class _QuantityButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: InkWell(
-        borderRadius: BorderRadius.circular(50),
-        onTap: onPressed,
-        child: Ink(
-          height: 25,
-          width: 25,
-          decoration: BoxDecoration(
-            color: color,
-            shape: BoxShape.circle,
-          ),
-          child: Icon(
-            icon,
-            color: Colors.white,
-            size: 16,
+      child: SizedBox(
+        child: InkWell(
+          borderRadius: BorderRadius.circular(50),
+          onTap: onPressed,
+          child: Ink(
+            height: 20,
+            width: 20,
+            decoration: BoxDecoration(
+              color: color,
+              shape: BoxShape.circle,
+            ),
+            child: Icon(
+              icon,
+              color: Colors.white,
+              size: 16,
+            ),
           ),
         ),
       ),

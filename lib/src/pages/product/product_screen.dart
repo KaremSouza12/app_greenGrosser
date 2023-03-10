@@ -65,14 +65,16 @@ class _ProductScreenState extends State<ProductScreen> {
                               ),
                             ),
                           ),
-                          QuantityWidget(
-                            suffixText: widget.item.unit,
-                            value: cartItemQuantity,
-                            result: (quantity) {
-                              setState(() {
-                                cartItemQuantity = quantity;
-                              });
-                            },
+                          Expanded(
+                            child: QuantityWidget(
+                              suffixText: widget.item.unit,
+                              value: cartItemQuantity,
+                              result: (quantity) {
+                                setState(() {
+                                  cartItemQuantity = quantity;
+                                });
+                              },
+                            ),
                           ),
                         ],
                       ),

@@ -6,9 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class ItemTile extends StatelessWidget {
-  ItemTile({super.key, required this.item});
+  ItemTile({super.key, required this.item, required this.cartAnimetionMethod});
 
   final ItemModel item;
+  final void Function(GlobalKey) cartAnimetionMethod;
+  final GlobalKey imageGK = GlobalKey();
+
   final UtilsServices utilsServices = UtilsServices();
 
   @override
@@ -32,7 +35,12 @@ class ItemTile extends StatelessWidget {
                   Expanded(
                     child: Hero(
                       tag: item.imgUrl,
-                      child: Image.asset(item.imgUrl),
+                      child: Container(
+                        key: imageGK,
+                        child: Image.asset(
+                          item.imgUrl,
+                        ),
+                      ),
                     ),
                   ),
                   Text(
@@ -72,7 +80,9 @@ class ItemTile extends StatelessWidget {
           top: 4,
           right: 4,
           child: GestureDetector(
-            onTap: () {},
+            onTap: () {
+              cartAnimetionMethod(imageGK);
+            },
             child: Container(
               height: 40,
               width: 35,
